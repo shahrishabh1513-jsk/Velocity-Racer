@@ -49,8 +49,9 @@ Control your car using the keyboard and navigate through the road while enemy ve
 
 🚀 Play the game online via **GitHub Pages**
 
-🔗 https://yourusername.github.io/velocity-racer/
+🔗 https://shahrishabh1513-jsk.github.io/Velocity-Racer/
 
 ---
 
 ⭐ **If you like this project, consider giving it a star!**
+
