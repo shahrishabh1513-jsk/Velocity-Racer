@@ -37,9 +37,20 @@ Control your car using the keyboard and navigate through the road while enemy ve
 
 ## 🛠 Tech Stack
 
-- **HTML5**
-- **CSS3**
-- **Vanilla JavaScript**
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=html" height="40" alt="HTML5"/>
+  <img src="https://skillicons.dev/icons?i=css" height="40" alt="CSS3"/>
+  <img src="https://skillicons.dev/icons?i=js" height="40" alt="JavaScript"/>
+</p>
 
 ---
 
+## 🌐 Live Demo
+
+🚀 Play the game online via **GitHub Pages**
+
+🔗 https://yourusername.github.io/velocity-racer/
+
+---
+
+⭐ **If you like this project, consider giving it a star!**
