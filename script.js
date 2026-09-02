@@ -1,21 +1,5 @@
-/* =====================================================================
-   HIGHWAY RUSH — script.js
-   Modular vanilla-JS highway racer. No external image/audio assets are
-   required: vehicles/obstacles/collectibles are drawn with CSS, and
-   sound effects are synthesized with the Web Audio API. If real image
-   files are later added under /images (see README), swapping them in
-   is a one-line change per entity type (see VEHICLE_IMAGES below).
-   ===================================================================== */
-
 (() => {
     "use strict";
-
-    /* ---------------------------------------------------------------
-       0. OPTIONAL IMAGE OVERRIDES
-       Fill any of these with a path (e.g. "images/player-car.png") to
-       use a real asset instead of the CSS-drawn fallback. Missing or
-       broken paths silently fall back to CSS — the game never breaks.
-       --------------------------------------------------------------- */
     const VEHICLE_IMAGES = {
         player: null,
         car: null,

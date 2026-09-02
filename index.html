@@ -9,14 +9,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Josefin+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div class="carGame" id="carGame">
 
-        <!-- ===================== HUD ===================== -->
         <div class="hud hide" id="hud">
             <div class="hud-score">
                 <span class="hud-label">score</span>
@@ -36,11 +37,15 @@
             <div class="hud-bottom">
                 <div class="meter fuel-meter">
                     <span class="meter-icon">⛽</span>
-                    <div class="meter-track"><div class="meter-fill" id="fuelFill"></div></div>
+                    <div class="meter-track">
+                        <div class="meter-fill" id="fuelFill"></div>
+                    </div>
                 </div>
                 <div class="meter nitro-meter">
                     <span class="meter-icon">⚡</span>
-                    <div class="meter-track"><div class="meter-fill" id="nitroFill"></div></div>
+                    <div class="meter-track">
+                        <div class="meter-fill" id="nitroFill"></div>
+                    </div>
                 </div>
                 <div class="speedo" id="speedo">
                     <span class="speedo-num" id="speedValue">000</span>
@@ -51,7 +56,6 @@
             <button class="iconBtn pauseBtn" id="pauseBtn" title="Pause (P)">❚❚</button>
         </div>
 
-        <!-- ================= START SCREEN ================= -->
         <div class="screen startScreen" id="startScreen">
             <div class="screen-inner">
                 <h1 class="logo">HIGHWAY <span>RUSH</span></h1>
@@ -69,7 +73,6 @@
             </div>
         </div>
 
-        <!-- ================= HOW TO PLAY ================= -->
         <div class="screen overlayScreen hide" id="howToScreen">
             <div class="screen-inner">
                 <h2>How To Play</h2>
@@ -80,13 +83,13 @@
                     <li><b>P</b> — pause / resume</li>
                     <li>🪙 Coins add score. ⚡ Nitro charges your boost.</li>
                     <li>🛡️ Shield absorbs one hit. ⛽ Fuel keeps you moving.</li>
-                    <li>Trucks &amp; buses are slow but wide — cones only cost you points, barriers cost you health.</li>
+                    <li>Trucks &amp; buses are slow but wide — cones only cost you points, barriers cost you health.
+                    </li>
                 </ul>
                 <button class="primaryBtn" id="howToCloseBtn">Got it</button>
             </div>
         </div>
 
-        <!-- ================= HIGH SCORES ================= -->
         <div class="screen overlayScreen hide" id="scoresScreen">
             <div class="screen-inner">
                 <h2>Best Run</h2>
@@ -101,10 +104,8 @@
             </div>
         </div>
 
-        <!-- ==================== COUNTDOWN ==================== -->
         <div class="countdown hide" id="countdown">3</div>
 
-        <!-- ==================== PAUSE ==================== -->
         <div class="screen overlayScreen hide" id="pauseScreen">
             <div class="screen-inner">
                 <h2>Game Paused</h2>
@@ -114,7 +115,6 @@
             </div>
         </div>
 
-        <!-- ================= LEVEL COMPLETE ================= -->
         <div class="screen overlayScreen hide" id="levelCompleteScreen">
             <div class="screen-inner">
                 <h2>🎉 Level Complete!</h2>
@@ -127,7 +127,6 @@
             </div>
         </div>
 
-        <!-- ==================== GAME OVER ==================== -->
         <div class="screen overlayScreen hide" id="gameOverScreen">
             <div class="screen-inner">
                 <h2 class="crash">💥 Game Over</h2>
@@ -143,13 +142,10 @@
             </div>
         </div>
 
-        <!-- ==================== TOASTS ==================== -->
         <div class="toastStack" id="toastStack"></div>
-
-        <!-- ==================== GAME AREA ==================== -->
+  
         <div class="gameArea" id="gameArea"></div>
 
-        <!-- ================= MOBILE CONTROLS ================= -->
         <div class="mobileControls hide" id="mobileControls">
             <div class="dpad">
                 <button class="dpadBtn up" data-key="ArrowUp">▲</button>
