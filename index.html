@@ -4,28 +4,167 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Car Game</title>
-    <link rel="shortcut icon" href="./images/Rweblogo (1).png" type="image/x-icon">
-    <link rel="icon" href="./images/Rweblogo (1).png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Highway Rush — Car Racing Game</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Josefin+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <div class="carGame">
-        <div class="score hide"></div>
-        <div class="startScreen">
-            <p> Click here to start<br />
-                Use arrow keys to move<br />
-                if you hit another car you will loss
-            </p>
+    <div class="carGame" id="carGame">
+
+        <!-- ===================== HUD ===================== -->
+        <div class="hud hide" id="hud">
+            <div class="hud-score">
+                <span class="hud-label">score</span>
+                <span class="hud-value" id="scoreValue">0</span>
+                <span class="hud-best">best <b id="bestInline">0</b></span>
+            </div>
+
+            <div class="hud-level" id="levelPill">
+                <span id="levelValue">LV 1</span>
+            </div>
+
+            <div class="hud-right">
+                <div class="hud-coins">🪙 <span id="coinsValue">0</span></div>
+                <div class="hud-lives" id="livesValue">❤️❤️❤️</div>
+            </div>
+
+            <div class="hud-bottom">
+                <div class="meter fuel-meter">
+                    <span class="meter-icon">⛽</span>
+                    <div class="meter-track"><div class="meter-fill" id="fuelFill"></div></div>
+                </div>
+                <div class="meter nitro-meter">
+                    <span class="meter-icon">⚡</span>
+                    <div class="meter-track"><div class="meter-fill" id="nitroFill"></div></div>
+                </div>
+                <div class="speedo" id="speedo">
+                    <span class="speedo-num" id="speedValue">000</span>
+                    <span class="speedo-unit">KM/H</span>
+                </div>
+            </div>
+
+            <button class="iconBtn pauseBtn" id="pauseBtn" title="Pause (P)">❚❚</button>
         </div>
-        <div class="gameArea"></div>
+
+        <!-- ================= START SCREEN ================= -->
+        <div class="screen startScreen" id="startScreen">
+            <div class="screen-inner">
+                <h1 class="logo">HIGHWAY <span>RUSH</span></h1>
+                <p class="tagline">Outrun the traffic. Chase the horizon.</p>
+
+                <button class="primaryBtn" id="startBtn">▶ Start Race</button>
+                <button class="ghostBtn" id="howToBtn">❓ How To Play</button>
+                <button class="ghostBtn" id="scoresBtn">🏆 High Scores</button>
+
+                <div class="controls-hint">
+                    <span>ARROWS / WASD — Drive</span>
+                    <span>SPACE — Nitro</span>
+                    <span>P — Pause</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= HOW TO PLAY ================= -->
+        <div class="screen overlayScreen hide" id="howToScreen">
+            <div class="screen-inner">
+                <h2>How To Play</h2>
+                <ul class="howToList">
+                    <li><b>◀ ▶ / A D</b> — change lane</li>
+                    <li><b>▲ ▼ / W S</b> — accelerate / brake</li>
+                    <li><b>SPACE</b> — burn collected nitro</li>
+                    <li><b>P</b> — pause / resume</li>
+                    <li>🪙 Coins add score. ⚡ Nitro charges your boost.</li>
+                    <li>🛡️ Shield absorbs one hit. ⛽ Fuel keeps you moving.</li>
+                    <li>Trucks &amp; buses are slow but wide — cones only cost you points, barriers cost you health.</li>
+                </ul>
+                <button class="primaryBtn" id="howToCloseBtn">Got it</button>
+            </div>
+        </div>
+
+        <!-- ================= HIGH SCORES ================= -->
+        <div class="screen overlayScreen hide" id="scoresScreen">
+            <div class="screen-inner">
+                <h2>Best Run</h2>
+                <div class="statGrid">
+                    <div><span id="bestScoreValue">0</span><label>Top Score</label></div>
+                    <div><span id="bestLevelValue">1</span><label>Best Level</label></div>
+                    <div><span id="bestCoinsValue">0</span><label>Total Coins</label></div>
+                    <div><span id="bestDistanceValue">0.0</span><label>Best Distance (km)</label></div>
+                </div>
+                <div class="achieveList" id="achieveList"></div>
+                <button class="primaryBtn" id="scoresCloseBtn">Close</button>
+            </div>
+        </div>
+
+        <!-- ==================== COUNTDOWN ==================== -->
+        <div class="countdown hide" id="countdown">3</div>
+
+        <!-- ==================== PAUSE ==================== -->
+        <div class="screen overlayScreen hide" id="pauseScreen">
+            <div class="screen-inner">
+                <h2>Game Paused</h2>
+                <button class="primaryBtn" id="resumeBtn">▶ Resume</button>
+                <button class="ghostBtn" id="restartFromPauseBtn">🔄 Restart</button>
+                <button class="ghostBtn" id="homeFromPauseBtn">🏠 Main Menu</button>
+            </div>
+        </div>
+
+        <!-- ================= LEVEL COMPLETE ================= -->
+        <div class="screen overlayScreen hide" id="levelCompleteScreen">
+            <div class="screen-inner">
+                <h2>🎉 Level Complete!</h2>
+                <div class="statGrid">
+                    <div><span id="lcScore">0</span><label>Score</label></div>
+                    <div><span id="lcCoins">0</span><label>Coins</label></div>
+                    <div><span id="lcDistance">0.0</span><label>Distance (km)</label></div>
+                </div>
+                <button class="primaryBtn" id="nextLevelBtn">▶ Next Level</button>
+            </div>
+        </div>
+
+        <!-- ==================== GAME OVER ==================== -->
+        <div class="screen overlayScreen hide" id="gameOverScreen">
+            <div class="screen-inner">
+                <h2 class="crash">💥 Game Over</h2>
+                <div class="statGrid">
+                    <div><span id="goScore">0</span><label>Final Score</label></div>
+                    <div><span id="goCoins">0</span><label>Coins</label></div>
+                    <div><span id="goLevel">1</span><label>Level</label></div>
+                    <div><span id="goBest">0</span><label>Best Score</label></div>
+                </div>
+                <div class="newBest hide" id="newBestBadge">🏆 New Best Score!</div>
+                <button class="primaryBtn" id="playAgainBtn">🔄 Play Again</button>
+                <button class="ghostBtn" id="mainMenuBtn">🏠 Main Menu</button>
+            </div>
+        </div>
+
+        <!-- ==================== TOASTS ==================== -->
+        <div class="toastStack" id="toastStack"></div>
+
+        <!-- ==================== GAME AREA ==================== -->
+        <div class="gameArea" id="gameArea"></div>
+
+        <!-- ================= MOBILE CONTROLS ================= -->
+        <div class="mobileControls hide" id="mobileControls">
+            <div class="dpad">
+                <button class="dpadBtn up" data-key="ArrowUp">▲</button>
+                <div class="dpad-row">
+                    <button class="dpadBtn left" data-key="ArrowLeft">◀</button>
+                    <button class="dpadBtn down" data-key="ArrowDown">▼</button>
+                    <button class="dpadBtn right" data-key="ArrowRight">▶</button>
+                </div>
+            </div>
+            <button class="nitroBtn" id="nitroBtn">⚡<br>NITRO</button>
+        </div>
+
     </div>
-    <script src="script.js"></script>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
